@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn43gseouocqb"]
+
+[ext_resource type="Texture2D" uid="uid://bg5xwaux1hsf8" path="res://assets/Door/2D Puzzle Elements/Door/Door_Black.png" id="1_ybpob"]
+
+[node name="OneWayDoor" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ybpob")
