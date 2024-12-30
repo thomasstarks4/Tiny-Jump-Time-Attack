@@ -30,3 +30,12 @@ script = ExtResource("4_hvonm")
 [node name="OneWayDoor" parent="." instance=ExtResource("5_iinwa")]
 z_index = -1
 position = Vector2(-80, 322)
+
+[node name="BG" type="ColorRect" parent="."]
+z_index = -4096
+offset_left = -403.0
+offset_top = -258.0
+offset_right = -363.0
+offset_bottom = -218.0
+scale = Vector2(41.2947, 24.1468)
+color = Color(0.239216, 0.145098, 0.231373, 1)

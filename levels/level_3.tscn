@@ -21,3 +21,12 @@ layer_0/tile_data = PackedInt32Array(-196613, 0, 0, -131077, 0, 1, -65541, 0, 2,
 [node name="Door" parent="TileMap" instance=ExtResource("3_kqd5y")]
 position = Vector2(451, 606)
 script = ExtResource("4_dae76")
+
+[node name="BG" type="ColorRect" parent="."]
+z_index = -4096
+offset_left = -418.0
+offset_top = -212.0
+offset_right = -378.0
+offset_bottom = -172.0
+scale = Vector2(42.1843, 26.736)
+color = Color(0.239216, 0.772549, 1, 1)
