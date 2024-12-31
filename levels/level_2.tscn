@@ -15,6 +15,7 @@ position = Vector2(-82, 321)
 zoom = Vector2(2.5, 2.5)
 
 [node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
 tile_set = ExtResource("2_rn3s1")
 format = 2
 layer_0/name = "Platforms"
@@ -33,9 +34,10 @@ position = Vector2(-80, 322)
 
 [node name="BG" type="ColorRect" parent="."]
 z_index = -4096
-offset_left = -403.0
-offset_top = -258.0
-offset_right = -363.0
-offset_bottom = -218.0
-scale = Vector2(41.2947, 24.1468)
+texture_filter = 1
+offset_left = -700.0
+offset_top = -447.0
+offset_right = -660.0
+offset_bottom = -407.0
+scale = Vector2(54.1542, 32.211)
 color = Color(0.239216, 0.145098, 0.231373, 1)
