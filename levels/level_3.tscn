@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b68114nr5rb7h"]
+[gd_scene load_steps=6 format=3 uid="uid://b68114nr5rb7h"]
 
 [ext_resource type="PackedScene" uid="uid://dfwacdyc6a6eb" path="res://player/player.tscn" id="1_srwqd"]
 [ext_resource type="TileSet" uid="uid://cjutnlum547u0" path="res://tilesets/level-one.tres" id="2_gkicx"]
 [ext_resource type="PackedScene" uid="uid://dqykwxr13n88m" path="res://static items/door.tscn" id="3_kqd5y"]
 [ext_resource type="Script" path="res://static items/door3.gd" id="4_dae76"]
+[ext_resource type="PackedScene" uid="uid://bn43gseouocqb" path="res://static items/one_way_door.tscn" id="5_nl0r1"]
 
 [node name="Level_3" type="Node2D"]
 
@@ -31,3 +32,7 @@ offset_right = -618.0
 offset_bottom = -345.0
 scale = Vector2(53.949, 34.0214)
 color = Color(0.239216, 0.772549, 1, 1)
+
+[node name="OneWayDoor" parent="." instance=ExtResource("5_nl0r1")]
+z_index = -500
+position = Vector2(144, 109)

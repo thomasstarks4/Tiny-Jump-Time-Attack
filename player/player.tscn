@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://u8nccj0kbc0y" path="res://assets/Individual Sprites/adventurer-run-05.png" id="23_btb8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8atul"]
+size = Vector2(20, 20.2933)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i4olk"]
 animations = [{
@@ -161,13 +162,13 @@ animations = [{
 script = ExtResource("1_cyr1g")
 
 [node name="PlayerBody" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(0, 3.07192)
 scale = Vector2(0.70852, -1.47123)
 shape = SubResource("RectangleShape2D_8atul")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(1.00651, 1.02909)
 sprite_frames = SubResource("SpriteFrames_i4olk")
-animation = &"run"
-frame_progress = 0.111494
+animation = &"idle"
 script = ExtResource("22_eixpm")
