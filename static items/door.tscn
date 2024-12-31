@@ -1,9 +1,25 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqykwxr13n88m"]
+[gd_scene load_steps=16 format=3 uid="uid://dqykwxr13n88m"]
 
 [ext_resource type="Script" path="res://static items/door.gd" id="1_o6sup"]
 [ext_resource type="Texture2D" uid="uid://um0sb5n8a0gr" path="res://assets/Door/2D Puzzle Elements/Door/Door_Open.png" id="2_in3d5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dw8te"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_opswd"]
+atlas = ExtResource("2_in3d5")
+region = Rect2(72, 0, 18, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws3px"]
+atlas = ExtResource("2_in3d5")
+region = Rect2(54, 0, 18, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmgc8"]
+atlas = ExtResource("2_in3d5")
+region = Rect2(36, 0, 18, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba8rd"]
+atlas = ExtResource("2_in3d5")
+region = Rect2(18, 0, 18, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uduiu"]
 atlas = ExtResource("2_in3d5")
 region = Rect2(0, 0, 18, 32)
 
@@ -31,9 +47,21 @@ region = Rect2(72, 0, 18, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dw8te")
+"texture": SubResource("AtlasTexture_opswd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws3px")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmgc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba8rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uduiu")
 }],
-"loop": true,
+"loop": false,
 "name": &"close",
 "speed": 5.0
 }, {
@@ -70,9 +98,9 @@ script = ExtResource("1_o6sup")
 [node name="DoorSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b6qfs")
 animation = &"close"
-frame_progress = 0.4446
 
 [node name="DoorOpenArea" type="Area2D" parent="."]
+scale = Vector2(5.47365, 5.62289)
 
 [node name="DoorOpenShape" type="CollisionShape2D" parent="DoorOpenArea"]
 position = Vector2(1.5, 0)
@@ -85,4 +113,5 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_sxjkv")
 
 [connection signal="body_entered" from="DoorOpenArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="DoorOpenArea" to="." method="_on_door_open_area_body_exited"]
 [connection signal="body_entered" from="DoorEnteredArea" to="." method="_on_door_entered_area_body_entered"]

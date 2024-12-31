@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dfwacdyc6a6eb"]
+[gd_scene load_steps=30 format=3 uid="uid://dfwacdyc6a6eb"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_cyr1g"]
 [ext_resource type="Texture2D" uid="uid://bip5x5ud4pdqy" path="res://assets/Individual Sprites/adventurer-fall-00.png" id="2_fkfni"]
@@ -27,8 +27,6 @@
 [ext_resource type="Script" path="res://player/PlayerAnimation.gd" id="22_eixpm"]
 [ext_resource type="Texture2D" uid="uid://cobn8msm1fi03" path="res://assets/Individual Sprites/adventurer-run-04.png" id="22_plvvh"]
 [ext_resource type="Texture2D" uid="uid://u8nccj0kbc0y" path="res://assets/Individual Sprites/adventurer-run-05.png" id="23_btb8w"]
-[ext_resource type="Texture2D" uid="uid://v06q3mfkilrh" path="res://assets/Individual Sprites/adventurer-wall-slide-00.png" id="27_qlntx"]
-[ext_resource type="Texture2D" uid="uid://obywqakrc00l" path="res://assets/Individual Sprites/adventurer-wall-slide-01.png" id="28_vexal"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8atul"]
 size = Vector2(20, 20.2933)
@@ -109,7 +107,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump",
-"speed": 15.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -158,17 +156,6 @@ animations = [{
 "loop": false,
 "name": &"use-item",
 "speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("27_qlntx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_vexal")
-}],
-"loop": true,
-"name": &"wall_slide",
-"speed": 5.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -183,7 +170,5 @@ shape = SubResource("RectangleShape2D_8atul")
 texture_filter = 1
 scale = Vector2(1.00651, 1.02909)
 sprite_frames = SubResource("SpriteFrames_i4olk")
-animation = &"jump"
-frame = 3
-frame_progress = 1.0
+animation = &"idle"
 script = ExtResource("22_eixpm")

@@ -4,6 +4,8 @@ extends AnimatedSprite2D
 const IDLE_ANIMATION = "idle"
 const RUN_ANIMATION = "run"
 const FALL_ANIMATION = "fall"
+const JUMP_ANIMATION = "jump"
+var is_jumping = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,8 +29,17 @@ func handle_movement():
 		else:
 			play(IDLE_ANIMATION) # Default to idle if no movement key is pressed
 	else:
-		# Play 'fall' animation when not on the floor
-		play(FALL_ANIMATION)
+		if not parent.is_on_wall():
+			# Play 'fall' animation when not on the floor
+			if parent.velocity.y > 0:
+				is_jumping = false
+				play(FALL_ANIMATION)
+			else:
+				if !is_jumping:
+					play(JUMP_ANIMATION)
+					is_jumping = true
+		else:
+			play("wall_slide")
 		handleDirection()
 	handleDirection()
 # Flip the sprite based on direction

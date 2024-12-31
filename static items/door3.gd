@@ -1,7 +1,6 @@
 extends Node2D
 
 var is_open: bool = false
-
 func _ready():
 	# Ensure the door starts in the 'closed' state
 	$DoorSprite.play('close')
@@ -20,3 +19,8 @@ func _on_door_entered_area_body_entered(body):
 
 func change_scene(scene_path: String):
 	get_tree().change_scene_to_file(scene_path)
+
+
+func _on_door_open_area_body_exited(body):
+	$DoorSprite.play('close')
+	is_open = false
