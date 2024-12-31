@@ -28,8 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://cobn8msm1fi03" path="res://assets/Individual Sprites/adventurer-run-04.png" id="22_plvvh"]
 [ext_resource type="Texture2D" uid="uid://u8nccj0kbc0y" path="res://assets/Individual Sprites/adventurer-run-05.png" id="23_btb8w"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_w4deo"]
-radius = 9.19447
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8atul"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i4olk"]
 animations = [{
@@ -164,7 +163,7 @@ script = ExtResource("1_cyr1g")
 [node name="PlayerBody" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 scale = Vector2(0.70852, -1.47123)
-shape = SubResource("CircleShape2D_w4deo")
+shape = SubResource("RectangleShape2D_8atul")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
