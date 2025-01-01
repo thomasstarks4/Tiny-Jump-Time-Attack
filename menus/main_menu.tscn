@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://co6l24xtd38f7"]
+[gd_scene load_steps=5 format=3 uid="uid://co6l24xtd38f7"]
 
 [ext_resource type="Script" path="res://menus/main_menu.gd" id="1_0x3rm"]
+[ext_resource type="AudioStream" uid="uid://lxd1ygraivit" path="res://assets/Music/game-8-bit-on-278083.mp3" id="2_rnaqw"]
+[ext_resource type="PackedScene" uid="uid://bhne7blr755rr" path="res://player/static_player.tscn" id="3_yysts"]
 
 [sub_resource type="Theme" id="Theme_l4q3l"]
 default_font_size = 8
@@ -19,10 +21,12 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -96.0
-offset_right = 96.0
-offset_bottom = 23.0
+offset_left = -262.0
+offset_top = 34.0
+offset_right = -70.0
+offset_bottom = 57.0
 grow_horizontal = 2
+scale = Vector2(3, 3)
 text = "Tiny Jump: Time Attack"
 horizontal_alignment = 1
 uppercase = true
@@ -62,6 +66,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.101961, 0.270588, 0.207843, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_rnaqw")
+
+[node name="Player" parent="AudioStreamPlayer2D" instance=ExtResource("3_yysts")]
+position = Vector2(566, 168)
+scale = Vector2(4, 4)
 
 [connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
