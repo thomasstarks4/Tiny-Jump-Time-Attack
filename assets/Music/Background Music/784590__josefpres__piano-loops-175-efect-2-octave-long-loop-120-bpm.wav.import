@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfwy0jgdxtah7"
+path="res://.godot/imported/784590__josefpres__piano-loops-175-efect-2-octave-long-loop-120-bpm.wav-7ed5f4c8c5ccbf8b78496ccf4ccf440c.sample"
+
+[deps]
+
+source_file="res://assets/Music/Background Music/784590__josefpres__piano-loops-175-efect-2-octave-long-loop-120-bpm.wav"
+dest_files=["res://.godot/imported/784590__josefpres__piano-loops-175-efect-2-octave-long-loop-120-bpm.wav-7ed5f4c8c5ccbf8b78496ccf4ccf440c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

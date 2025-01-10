@@ -4,8 +4,8 @@ extends Control
 func _ready():
 	music_player.play()
 func _on_start_game_button_pressed():
-	if ResourceLoader.exists("res://levels/level-one.tscn"):
-			get_tree().change_scene_to_file("res://levels/level-one.tscn")
+	if ResourceLoader.exists("res://levels/welcome.tscn"):
+			get_tree().change_scene_to_file("res://levels/welcome.tscn")
 	else:
 		print("Error: Scene 'level-one.tscn' does not exist.")
 

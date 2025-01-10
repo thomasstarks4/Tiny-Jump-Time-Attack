@@ -1,0 +1,37 @@
+~ start
+Graveri: [[Oops|Yikes|Sorry, your majesty]]! 
+Graveri: Can you still hear me?!
+- -Remain silent-
+	Graveri: oh man, I killed the king!!!
+	You: Just messing with you dude!
+	Graveri: -Groans- Well, it certainly seems that you are indeed your father's son!
+	=> apology
+- I'm here, Griveri!
+	Graveri: Thanks for not pulling a prank on me! Maybe you take after your mother after all!
+	=> apology
+- You'd better have a good explanation for why I'm not in a castle right now...
+	Graveri: Yikes! 
+	Graveri: Err... Would you accept that my mind drifted off for a moment?
+	You: Not exactly...
+	Graveri: -Gulps-
+	=> apology
+- (Skip Dialogue)
+	set Game.level_one_dialogue_finished = true
+	=> END
+	
+ ~ apology	
+Graveri: Well I'm sorry to tell you this my liege, but it seems I MAY have miscalculated your coordinates a bit...
+You: You say that like it's a bad thing...
+Graveri: Well...
+Graveri: You may have ended up in the Warproot Woods...
+You: WHAT?! Where is that?
+Graveri: -Thinking- Not too far from the hot springs... Har har!
+Graveri: Not to worry! All the paths lead directly to the castle! I'm certain you'll be here in no time! You are your father's son, after all!
+Graveri: Just keep following the doors and you'll be golden!
+You: Ugh... Exercise? This doesn't sound like any royal treatment I've heard of...
+Graveri: -mumbling- Just wait until you come across that giant bat...
+You: What?!
+Graveri: Don't worry you'll be fine! 
+Graveri: See you when you get here, your majesty!
+set Game.level_one_dialogue_finished = true
+=> END

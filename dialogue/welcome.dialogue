@@ -1,0 +1,85 @@
+~ start
+???: [[Yo|What's up|Salutations]]! Nice to meet you!
+You: Is someone in my head? Hello? Who are you?!
+???: Who am I? Do you really care?
+- Of course!
+	Graveri: What a nice person you are! I'm Graveri!
+- Not really...
+	???: How rude!!!
+	Graveri: Well not that you care, but I'm Graveri.
+- (Skip Intro) 
+	set Game.intro_dialogue_complete = true
+	=> END
+
+~ introductions
+set Game.show_graveri = true
+Graveri: Anyways, you're probably wondering why you're here...
+- Yeah! What are you doing in my head?!
+- Nah, happens all the time
+	You: Wait, no it doesn't! How are we talking right now?
+Graveri: Oh that? I'm using a magic stone that your father left me. He said you might be wearing a similar stone. 
+Graveri: Well, are you?
+You: Yeah. My uncle only said it was very special, and that I should never lose it.
+Graveri: Sounds about right. Your uncle is who we sent you to once the wars broke out when you were still just a baby. 
+You: Wars? Uncle Bryant never told me anything about any wars.
+Graveri: It was all to protect you, my boy! 
+Graveri: Here in Bleakvale (yeah, happy name I know...) we've been under constant war since our king died. It's been a bit of a mess...
+- What does that have to do with me?
+	Graveri: A lot, actually!
+- That's terrible!
+	Graveri: Thanks for saying that!
+Graveri: I hate to be the bearer of bad news, but the king was your father. 
+Graveri: Sad to say, since by the sound of things, I don't think you ever knew that...
+Graveri: Coupled with the fact that he really wanted to meet you before his untimely demise... well...
+set Game.graveri_attacked = false
+Graveri: ARGHH!!!!
+set Game.graveri_attacked = true
+Graveri: Sorry, it just ticks me off sometimes! A boy should know his father!
+=> next_steps
+
+~ next_steps
+Graveri: Anyway, now that we've made contact, you're needed here. All eyes are on you to restore Bleakvale.
+Graveri: I won't lie... It's dangerous. Rival lords have torn this place apart, each claiming they're the rightful ruler.
+=> gathering_info
+
+~ gathering_info
+- But I'm no king...
+	Graveri: You might not feel like one, but whether you like it or not, you are next in line.
+	=> gathering_info
+- Tell me more about these rival lords.
+	Graveri: There are three major factions: the Black Oath, the Golden Banner, and the Twisted Fates.
+	Graveri: Each one thinks they have a claim to the throne. None of them will welcome you easily.
+	=> gathering_info
+- Is there a way to avoid this war altogether?
+	Graveri: Possibly, but it would mean forsaking Bleakvale. Your father’s dream would die here.
+	Graveri: If you run, everything he built goes to ruin.
+	=> gathering_info
+- All right. I think I understand the gist of things. How do I get to Bleakvale?	
+	=> sayonara
+
+~ sayonara
+Graveri: Hold your horses there, your majesty!
+Graveri: Before you decide, I have to show you something. Something you'll need to see.
+Graveri: Oh, and another thing...
+Graveri: Our court wizard Zeno vanished right after your father was killed, but I happen to know a bit of magic myself!
+Graveri: What kind of general would I be if I didn't!
+You: A general? I seriously have a whole army waiting for me?
+Graveri: That you do, young majesty.
+Graveri: Now, I don't have too much experience actually using magic on OTHERS per se, but I bugged old Zeno enough to get him to teach me a teleport spell!
+Graveri: -thinking- So I could teleport to the girl's hot springs... Har har har! 
+
+- Are you sure this is safe?
+	Graveri: Of course! Well, at least I think so...
+	Graveri: It doesn't matter! It's our only option! 
+	Graveri: It's not like we can go asking for one of the other court wizards for help or something.
+- I'm leaving. I never asked for this.
+	Graveri: If that's really what you want, I'll not force you. But you'll always wonder what might've been...
+	You: Fine. What other choice do I have?
+- Remain silent
+	Graveri: -sighs- Silence can be an answer, too. I know you must have a million things running through your mind right now. Let's get going, though. Maybe you'll find your resolve on the way.
+
+Graveri: No matter what path you choose, Bleakvale's fate is now intertwined with yours.
+Graveri: Now prepare yourself!
+
+set Game.intro_dialogue_complete = true
+=> END

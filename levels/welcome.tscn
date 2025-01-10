@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dypm6jsqu3w3y"]
+
+[ext_resource type="Script" path="res://levels/welcome.gd" id="1_doq1y"]
+[ext_resource type="PackedScene" uid="uid://bwlkoducm0koj" path="res://characters/graveri.tscn" id="2_2k2fl"]
+[ext_resource type="AudioStream" uid="uid://dfwy0jgdxtah7" path="res://assets/Music/Background Music/784590__josefpres__piano-loops-175-efect-2-octave-long-loop-120-bpm.wav" id="3_j0sa2"]
+
+[node name="Welcome" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_doq1y")
+
+[node name="Graveri" parent="." instance=ExtResource("2_2k2fl")]
+position = Vector2(576, 278)
+scale = Vector2(4, 4)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -400
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.7998, 16.1997)
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_j0sa2")
+volume_db = 5.0
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

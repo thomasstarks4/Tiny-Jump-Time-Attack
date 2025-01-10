@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy1et2wcpkhml"]
+
+[ext_resource type="Script" path="res://ui elements/credits.gd" id="1_5wfrb"]
+[ext_resource type="AudioStream" uid="uid://dfwy0jgdxtah7" path="res://assets/Music/Background Music/784590__josefpres__piano-loops-175-efect-2-octave-long-loop-120-bpm.wav" id="2_jaank"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_5wfrb")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(1.1659, 1.07388)
+horizontal_alignment = 1
+
+[node name="CreditsMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jaank")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -4096
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
