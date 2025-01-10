@@ -13,7 +13,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	music_begin = Game.level_one_dialogue_finished
 	if music_begin and not music_started:
 		music_player.play()

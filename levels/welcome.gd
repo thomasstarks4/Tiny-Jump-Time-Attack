@@ -3,7 +3,7 @@ extends Node2D
 func _ready():
 	DialogueManager.show_example_dialogue_balloon(load("res://dialogue/welcome.dialogue"), "start")
 	$Graveri.visible = false
-func _process(delta):
+func _process(_delta):
 	$Graveri.visible = Game.show_graveri
 	if Game.intro_dialogue_complete:
 		get_tree().change_scene_to_file("res://levels/level-one.tscn")
