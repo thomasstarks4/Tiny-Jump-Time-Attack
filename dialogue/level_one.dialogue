@@ -1,4 +1,5 @@
 ~ start
+set Game.is_in_dialogue = true
 Graveri: [[Oops|Yikes|Sorry, your majesty]]! 
 Graveri: Can you still hear me?!
 - -Remain silent-
@@ -17,6 +18,7 @@ Graveri: Can you still hear me?!
 	=> apology
 - (Skip Dialogue)
 	set Game.level_one_dialogue_finished = true
+	set Game.is_in_dialogue = false
 	=> END
 	
  ~ apology	
@@ -34,4 +36,5 @@ You: What?!
 Graveri: Don't worry you'll be fine! 
 Graveri: See you when you get here, your majesty!
 set Game.level_one_dialogue_finished = true
+set Game.is_in_dialogue = false 
 => END

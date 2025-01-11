@@ -11,7 +11,6 @@ func _ready():
 	$Player/Camera2D.limit_top = -226 	
 	DialogueManager.show_example_dialogue_balloon(load("res://dialogue/level_one.dialogue"), "start")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	music_begin = Game.level_one_dialogue_finished

@@ -1,4 +1,5 @@
 ~ start
+set Game.is_in_dialogue = true
 ???: [[Yo|What's up|Salutations]]! Nice to meet you!
 You: Is someone in my head? Hello? Who are you?!
 ???: Who am I? Do you really care?
@@ -9,6 +10,7 @@ You: Is someone in my head? Hello? Who are you?!
 	Graveri: Well not that you care, but I'm Graveri.
 - (Skip Intro) 
 	set Game.intro_dialogue_complete = true
+	set Game.is_in_dialogue = false
 	=> END
 
 ~ introductions
@@ -82,4 +84,5 @@ Graveri: No matter what path you choose, Bleakvale's fate is now intertwined wit
 Graveri: Now prepare yourself!
 
 set Game.intro_dialogue_complete = true
+set Game.is_in_dialogue = false
 => END

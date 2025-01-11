@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dx6ge0atcfweq" path="res://ui elements/hp.tscn" id="6_t610j"]
 
 [node name="Level" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_6rjjk")
 
 [node name="TileMap" type="TileMap" parent="."]

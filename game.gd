@@ -7,12 +7,15 @@ var is_dashing_enabled = false
 @onready var playerHP = playerMaxHP
 var playerHealthRegen = 0
 
+var is_in_dialogue = false
+
 func _ready():
 	reset_cooldowns()
 
 func _process(delta):
 	track_cooldowns(delta)
 	
+#Tracks all cooldowns in game
 func track_cooldowns(delta):
 	if playerHP < playerMaxHP: #Regen does not start if player is at max HP
 		playerHealthRegen += (delta) #30 frames = 1 second
@@ -21,6 +24,7 @@ func track_cooldowns(delta):
 				playerHP += 1
 				playerHealthRegen = 0
 
+#Resets cooldowns. Selectively resets if type is specified.
 func reset_cooldowns(type = null):
 	if type == null: #Then reset all cooldowns
 		playerHealthRegen = 0

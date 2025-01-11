@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://co6l24xtd38f7"]
+[gd_scene load_steps=6 format=3 uid="uid://co6l24xtd38f7"]
 
 [ext_resource type="Script" path="res://menus/main_menu.gd" id="1_0x3rm"]
+[ext_resource type="Script" path="res://menus/StartGameButton.gd" id="2_2c4b8"]
 [ext_resource type="AudioStream" uid="uid://lxd1ygraivit" path="res://assets/Music/game-8-bit-on-278083.mp3" id="2_rnaqw"]
 [ext_resource type="PackedScene" uid="uid://bhne7blr755rr" path="res://player/static_player.tscn" id="3_yysts"]
 
@@ -51,6 +52,7 @@ theme_override_constants/separation = 8
 [node name="StartGameButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Start Game"
+script = ExtResource("2_2c4b8")
 
 [node name="QuitGameButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

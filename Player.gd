@@ -3,6 +3,7 @@ extends CharacterBody2D
 var wall_slide_timer = 0.0
 var is_wall_sliding = false
 
+#Movement variables
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -24,42 +25,43 @@ func _ready():
 	anim.play(IDLE_ANIMATION)
 
 func _physics_process(delta):
-	# Gravity handling
-	var direction = Input.get_axis("left", "right")
-	if (not is_on_floor() and not is_on_wall()) or is_on_floor():
-		is_wall_sliding = false
-		velocity.y += gravity * delta
-
-	if is_on_wall():
-		if velocity.y > 0 and wall_slide_timer:
-			is_wall_sliding = true
-		else:
+	if not Game.is_in_dialogue:
+		# Gravity handling
+		var direction = Input.get_axis("left", "right")
+		if (not is_on_floor() and not is_on_wall()) or is_on_floor():
 			is_wall_sliding = false
-			wall_slide_timer += delta
-		#Wall sliding physics
-		if is_wall_sliding:
-			velocity.y += (gravity / 10) * delta
-		else:
 			velocity.y += gravity * delta
-	# Jump
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 
-	# Smaller jump if wall sliding
-	if Input.is_action_just_pressed("jump") and is_on_wall():
-		velocity.y = JUMP_VELOCITY/2
-		#Direction based launch
-		velocity.x = JUMP_VELOCITY * direction
+		if is_on_wall():
+			if velocity.y > 0 and wall_slide_timer:
+				is_wall_sliding = true
+			else:
+				is_wall_sliding = false
+				wall_slide_timer += delta
+			#Wall sliding physics
+			if is_wall_sliding:
+				velocity.y += (gravity / 10) * delta
+			else:
+				velocity.y += gravity * delta
+		# Jump
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
 
-	# Horizontal movement
-	if direction != 0:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		# Smaller jump if wall sliding
+		if Input.is_action_just_pressed("jump") and is_on_wall():
+			velocity.y = JUMP_VELOCITY/2
+			#Direction based launch
+			velocity.x = JUMP_VELOCITY * direction
 
-	# Movement and animation
-	handle_movement(direction)
-	move_and_slide()
+		# Horizontal movement
+		if direction != 0:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+
+		# Movement and animation
+		handle_movement(direction)
+		move_and_slide()
 
 func handle_movement(direction: float):
 	# Floor animations
