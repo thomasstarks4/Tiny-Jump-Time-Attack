@@ -5,7 +5,7 @@ func _ready():
 	$Graveri.visible = false
 func _process(_delta):
 	$Graveri.visible = Game.show_graveri
-	if Game.intro_dialogue_complete and SceneManager.scene_changed:
+	if Game.intro_dialogue_complete:
 		get_tree().change_scene_to_file("res://levels/level-one.tscn")
 
 

@@ -22,13 +22,14 @@ layer_1/z_index = -2
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("2_qu2ag")]
-position = Vector2(72, 255)
+position = Vector2(72, 254)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2.5, 2.5)
 
 [node name="Door" parent="." instance=ExtResource("3_7waec")]
 position = Vector2(295, -144)
+scene_name = "res://levels/level_2.tscn"
 
 [node name="BG" type="ColorRect" parent="."]
 z_index = -4096

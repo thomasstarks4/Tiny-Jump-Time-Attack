@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dos1t3bagsbw2"]
+[gd_scene load_steps=8 format=3 uid="uid://dos1t3bagsbw2"]
 
 [ext_resource type="Script" path="res://levels/level_3.gd" id="1_m0txf"]
 [ext_resource type="PackedScene" uid="uid://dfwacdyc6a6eb" path="res://player/player.tscn" id="2_mqgqm"]
 [ext_resource type="TileSet" uid="uid://cjutnlum547u0" path="res://tilesets/level-one.tres" id="3_aek01"]
 [ext_resource type="PackedScene" uid="uid://dqykwxr13n88m" path="res://static items/door.tscn" id="4_1old6"]
-[ext_resource type="Script" path="res://static items/door3.gd" id="5_6bwsc"]
 [ext_resource type="PackedScene" uid="uid://bn43gseouocqb" path="res://static items/one_way_door.tscn" id="6_8yna0"]
 [ext_resource type="AudioStream" uid="uid://s45i85w8k7l3" path="res://assets/Music/8-bit-retro-game-music-233964.mp3" id="7_myawi"]
 [ext_resource type="PackedScene" uid="uid://bupiwrxnprwwt" path="res://enemies/Bosses/boss_1.tscn" id="8_fempx"]
@@ -45,4 +44,4 @@ position = Vector2(644, 594)
 
 [node name="Door" parent="." instance=ExtResource("4_1old6")]
 position = Vector2(404, 326)
-script = ExtResource("5_6bwsc")
+scene_name = "res://levels/level-one.tscn"

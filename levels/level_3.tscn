@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b68114nr5rb7h"]
+[gd_scene load_steps=8 format=3 uid="uid://b68114nr5rb7h"]
 
 [ext_resource type="PackedScene" uid="uid://dfwacdyc6a6eb" path="res://player/player.tscn" id="1_srwqd"]
 [ext_resource type="Script" path="res://levels/level_3.gd" id="1_yl4s8"]
 [ext_resource type="TileSet" uid="uid://cjutnlum547u0" path="res://tilesets/level-one.tres" id="2_gkicx"]
 [ext_resource type="PackedScene" uid="uid://dqykwxr13n88m" path="res://static items/door.tscn" id="3_kqd5y"]
-[ext_resource type="Script" path="res://static items/door3.gd" id="4_dae76"]
 [ext_resource type="PackedScene" uid="uid://bn43gseouocqb" path="res://static items/one_way_door.tscn" id="5_nl0r1"]
 [ext_resource type="AudioStream" uid="uid://s45i85w8k7l3" path="res://assets/Music/8-bit-retro-game-music-233964.mp3" id="7_ptekf"]
 [ext_resource type="PackedScene" uid="uid://db0dk6yjdphsj" path="res://static items/BossBattleIncoming.tscn" id="8_7uyh8"]
@@ -26,7 +25,7 @@ layer_0/tile_data = PackedInt32Array(-196613, 0, 0, -131077, 0, 1, -65541, 0, 2,
 
 [node name="Door" parent="TileMap" instance=ExtResource("3_kqd5y")]
 position = Vector2(451, 606)
-script = ExtResource("4_dae76")
+scene_name = "res://levels/level-one.tscn"
 
 [node name="BG" type="ColorRect" parent="."]
 z_index = -4096

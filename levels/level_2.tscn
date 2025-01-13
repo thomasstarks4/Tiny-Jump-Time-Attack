@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cp41imr41b6q0"]
+[gd_scene load_steps=8 format=3 uid="uid://cp41imr41b6q0"]
 
 [ext_resource type="Script" path="res://levels/level_2.gd" id="1_8o4mn"]
 [ext_resource type="PackedScene" uid="uid://dfwacdyc6a6eb" path="res://player/player.tscn" id="1_ytkt2"]
 [ext_resource type="TileSet" uid="uid://cjutnlum547u0" path="res://tilesets/level-one.tres" id="2_rn3s1"]
 [ext_resource type="PackedScene" uid="uid://dqykwxr13n88m" path="res://static items/door.tscn" id="3_cc4dd"]
-[ext_resource type="Script" path="res://static items/door2.gd" id="4_hvonm"]
 [ext_resource type="PackedScene" uid="uid://bn43gseouocqb" path="res://static items/one_way_door.tscn" id="5_iinwa"]
 [ext_resource type="AudioStream" uid="uid://s45i85w8k7l3" path="res://assets/Music/8-bit-retro-game-music-233964.mp3" id="7_px510"]
 [ext_resource type="PackedScene" uid="uid://dx6ge0atcfweq" path="res://ui elements/hp.tscn" id="8_pyh2w"]
@@ -30,7 +29,7 @@ layer_1/tile_data = PackedInt32Array(-196615, 65536, 1, -131079, 65536, 2, -6554
 
 [node name="Door" parent="TileMap" instance=ExtResource("3_cc4dd")]
 position = Vector2(385, 3)
-script = ExtResource("4_hvonm")
+scene_name = "res://levels/level_3.tscn"
 
 [node name="OneWayDoor" parent="." instance=ExtResource("5_iinwa")]
 z_index = -1
