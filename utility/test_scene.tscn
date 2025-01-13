@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu1eyicldrkbr"]
+
+[ext_resource type="Script" path="res://utility/test_scene.gd" id="1_vmmcd"]
+[ext_resource type="PackedScene" uid="uid://cupfp0eymnulw" path="res://utility/transition_handler.tscn" id="1_wcare"]
+
+[node name="TestScene" type="Node2D"]
+script = ExtResource("1_vmmcd")
+
+[node name="TransitionHandler" parent="." instance=ExtResource("1_wcare")]

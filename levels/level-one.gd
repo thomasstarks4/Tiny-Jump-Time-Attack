@@ -5,6 +5,7 @@ var music_begin = false
 var music_started = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$TransitionHandler.fade_in()
 	$Player/Camera2D.limit_bottom = 280
 	$Player/Camera2D.limit_left = 0
 	$Player/Camera2D.limit_right = 525

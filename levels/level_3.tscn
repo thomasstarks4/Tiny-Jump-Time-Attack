@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b68114nr5rb7h"]
+[gd_scene load_steps=9 format=3 uid="uid://b68114nr5rb7h"]
 
 [ext_resource type="PackedScene" uid="uid://dfwacdyc6a6eb" path="res://player/player.tscn" id="1_srwqd"]
 [ext_resource type="Script" path="res://levels/level_3.gd" id="1_yl4s8"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dqykwxr13n88m" path="res://static items/door.tscn" id="3_kqd5y"]
 [ext_resource type="PackedScene" uid="uid://bn43gseouocqb" path="res://static items/one_way_door.tscn" id="5_nl0r1"]
 [ext_resource type="AudioStream" uid="uid://s45i85w8k7l3" path="res://assets/Music/8-bit-retro-game-music-233964.mp3" id="7_ptekf"]
-[ext_resource type="PackedScene" uid="uid://db0dk6yjdphsj" path="res://static items/BossBattleIncoming.tscn" id="8_7uyh8"]
+[ext_resource type="PackedScene" uid="uid://cupfp0eymnulw" path="res://utility/transition_handler.tscn" id="8_usoam"]
+[ext_resource type="PackedScene" uid="uid://cfa1dfpwj7rli" path="res://static items/Label.tscn" id="8_ym8nn"]
 
 [node name="Level_3" type="Node2D"]
 script = ExtResource("1_yl4s8")
@@ -43,8 +44,17 @@ position = Vector2(144, 109)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_ptekf")
 
-[node name="BossWarning" parent="." instance=ExtResource("8_7uyh8")]
-offset_left = 365.0
-offset_top = 525.0
-offset_right = 415.0
-offset_bottom = 525.0
+[node name="TransitionHandler" parent="." instance=ExtResource("8_usoam")]
+visible = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 451.0
+offset_top = 566.0
+offset_right = 452.0
+offset_bottom = 566.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Text" parent="HBoxContainer" instance=ExtResource("8_ym8nn")]
+layout_mode = 2
+typewriter_text = "Boss Battle Incoming!!!"

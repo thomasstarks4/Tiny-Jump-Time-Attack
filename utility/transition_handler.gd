@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var rect = $ColorRect
-@onready var anim = $AnimationPlayer
+@onready var rect = $TransitionRect
+@onready var anim = $TransitionPlayer
 
 signal transition_finished
 # Called when the node enters the scene tree for the first time.
@@ -19,3 +19,9 @@ func _on_animation_finished(anim_name):
 		rect.visible = false
 	elif anim_name == "scene_fade_out":
 		pass
+
+func fade_in():
+	rect.visible = true
+	anim.play("scene_fade_in")
+	await anim.animation_finished
+	rect.visible = false

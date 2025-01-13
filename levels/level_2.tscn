@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cp41imr41b6q0"]
+[gd_scene load_steps=9 format=3 uid="uid://cp41imr41b6q0"]
 
 [ext_resource type="Script" path="res://levels/level_2.gd" id="1_8o4mn"]
 [ext_resource type="PackedScene" uid="uid://dfwacdyc6a6eb" path="res://player/player.tscn" id="1_ytkt2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dqykwxr13n88m" path="res://static items/door.tscn" id="3_cc4dd"]
 [ext_resource type="PackedScene" uid="uid://bn43gseouocqb" path="res://static items/one_way_door.tscn" id="5_iinwa"]
 [ext_resource type="AudioStream" uid="uid://s45i85w8k7l3" path="res://assets/Music/8-bit-retro-game-music-233964.mp3" id="7_px510"]
+[ext_resource type="PackedScene" uid="uid://cupfp0eymnulw" path="res://utility/transition_handler.tscn" id="8_j7efj"]
 [ext_resource type="PackedScene" uid="uid://dx6ge0atcfweq" path="res://ui elements/hp.tscn" id="8_pyh2w"]
 
 [node name="Level-2" type="Node2D"]
@@ -49,3 +50,5 @@ color = Color(0.239216, 0.145098, 0.231373, 1)
 stream = ExtResource("7_px510")
 
 [node name="HP" parent="." instance=ExtResource("8_pyh2w")]
+
+[node name="TransitionHandler" parent="." instance=ExtResource("8_j7efj")]

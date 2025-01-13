@@ -47,7 +47,6 @@ func update_hearts():
 		heart.position.x = current_pos
 		heart.position.y = 25
 		current_pos += heart_spacing
-		print("Added heart:", i, "at position:", heart.position)  # Debug
 
 	# Add darkened hearts for missing health
 	var missing_hp = Game.playerMaxHP - Game.playerHP
@@ -57,7 +56,6 @@ func update_hearts():
 		missing_heart.position.x = current_pos
 		missing_heart.position.y = 25
 		current_pos += heart_spacing
-		print("Added darkened heart:", j, "at position:", missing_heart.position)  # Debug
 
 	# Update the tracked player HP
 	player_hp = Game.playerHP

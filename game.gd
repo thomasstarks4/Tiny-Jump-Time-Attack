@@ -6,7 +6,7 @@ var is_dashing_enabled = false
 @onready var playerMaxHP = 5
 @onready var playerHP = playerMaxHP
 var playerHealthRegen = 0
-
+var player_stopped = false
 var is_in_dialogue = false
 
 func _ready():

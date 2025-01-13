@@ -1,10 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfa1dfpwj7rli"]
 
-[ext_resource type="Script" path="res://Node2D.gd" id="1_yyy5w"]
+[ext_resource type="Script" path="res://utility/Typewriter.gd" id="1_w2lsi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pgx8q"]
 
 [sub_resource type="FontFile" id="FontFile_gcaji"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -17,4 +20,4 @@ material = SubResource("ShaderMaterial_pgx8q")
 theme_override_colors/font_color = Color(0.639216, 0.733333, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.207843, 0, 0.909804, 1)
 theme_override_fonts/font = SubResource("FontFile_gcaji")
-script = ExtResource("1_yyy5w")
+script = ExtResource("1_w2lsi")

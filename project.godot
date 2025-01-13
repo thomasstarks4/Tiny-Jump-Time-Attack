@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 Game="*res://game.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-SceneManager="*res://scene_manager.gd"
 NavigationHandler="*res://navigation_handler.gd"
 
 [display]

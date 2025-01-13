@@ -5,6 +5,7 @@ var is_open: bool = false
 func _ready():
 	# Ensure the door starts in the 'closed' state
 	$DoorSprite.play('close')
+	Game.player_stopped = false
 
 
 func _on_area_2d_body_entered(body):
@@ -17,6 +18,7 @@ func _on_area_2d_body_entered(body):
 func _on_door_entered_area_body_entered(body):
 	if body.name == "Player":
 		print(scene_name)
+		Game.player_stopped = true
 		NavigationHandler.navigate(scene_name)
 
 func change_scene(scene_path: String):

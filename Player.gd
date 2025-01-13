@@ -25,7 +25,7 @@ func _ready():
 	anim.play(IDLE_ANIMATION)
 
 func _physics_process(delta):
-	if not Game.is_in_dialogue:
+	if not Game.is_in_dialogue and not Game.player_stopped:
 		# Gravity handling
 		var direction = Input.get_axis("left", "right")
 		if (not is_on_floor() and not is_on_wall()) or is_on_floor():
