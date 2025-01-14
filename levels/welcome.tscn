@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dypm6jsqu3w3y"]
+[gd_scene load_steps=6 format=3 uid="uid://dypm6jsqu3w3y"]
 
 [ext_resource type="Script" path="res://levels/welcome.gd" id="1_doq1y"]
 [ext_resource type="PackedScene" uid="uid://bwlkoducm0koj" path="res://characters/graveri.tscn" id="2_2k2fl"]
 [ext_resource type="AudioStream" uid="uid://dfwy0jgdxtah7" path="res://assets/Music/Background Music/784590__josefpres__piano-loops-175-efect-2-octave-long-loop-120-bpm.wav" id="3_j0sa2"]
 [ext_resource type="PackedScene" uid="uid://cupfp0eymnulw" path="res://utility/transition_handler.tscn" id="4_01p83"]
+[ext_resource type="AudioStream" uid="uid://b8ow2etl2m63o" path="res://assets/Sounds/effects/245731__noirenex__teleport.wav" id="5_cttao"]
 
 [node name="Welcome" type="Node2D"]
 process_mode = 3
@@ -26,5 +27,9 @@ volume_db = 5.0
 autoplay = true
 
 [node name="TransitionHandler" parent="." instance=ExtResource("4_01p83")]
+
+[node name="TeleportSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("5_cttao")
 
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

@@ -41,9 +41,10 @@ _data = {
 "idle": SubResource("Animation_xv21y")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_afmrr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ne0c4"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qa81y"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ha7vb"]
+size = Vector2(20, 15)
 
 [node name="Boss1" type="CharacterBody2D"]
 script = ExtResource("1_07vgm")
@@ -59,14 +60,17 @@ libraries = {
 }
 
 [node name="PlayerDetectionArea" type="Area2D" parent="."]
+visible = false
 scale = Vector2(68.88, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
-shape = SubResource("RectangleShape2D_afmrr")
+scale = Vector2(0.294478, 2.24649)
+shape = SubResource("RectangleShape2D_ne0c4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
 scale = Vector2(1, 1.8)
-shape = SubResource("CircleShape2D_qa81y")
+shape = SubResource("RectangleShape2D_ha7vb")
 
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]

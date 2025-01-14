@@ -2,72 +2,71 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = get_node("AnimationPlayer")
-var player
+@onready var sprite = $BossSprite
 var chase = false
 var SPEED = 50
 var isDead = false
-var HP = 1
+var HP = 5
 var count = 0
 var cooldown = 0
 var damageCooldown = 0
 var knockbackCooldown = 90
 var isfrog = true
-var charName = "Frog"
+var charName = "Boss1"
 var damaging = false
 var currentTarget
+var knockback_timer = 0.0
+var knockback_velocity = Vector2.ZERO
+var is_knocked_back = false
+const DEFENSE = 1
 
 func _ready():
 	anim.play("idle")
-
+	
 func _physics_process(delta):
-	if not isDead:
-		damageCooldown += 1
-		velocity.y += gravity * delta
-		if chase:
-			handleChasing(delta)
+	if isDead:
+		return
+	#Knockback Effect
+	if is_knocked_back:
+		knockback_timer -= delta
+		velocity = knockback_velocity
 		move_and_slide()
-		if not chase:
-			anim.play("idle")	
-			velocity.x = 0
-		amIAlive()
-		if damaging and damageCooldown > 90: #This damages the player every 1.5 seconds. Adjust if needed
-			#player.takeDamage(1)
-			damageCooldown = 0
-			# Knockback effect	
-			#if the player is not near a wall and would get stuck, an area2D must be added in the level aa a boundary.
-			#still figuring out how i'm going to make this a thing because the previous attempt with
-			#an area2d did not work
-#			if Game.canKnockbackPlayer:
-			#if not Game.playerIsNearWall:
-				#var knockback_distance = 20  # Adjust this value as needed
-				#var direction = sign(currentTarget.position.x - self.position.x)  # Get the sign of the x-direction
-				#currentTarget.position.x += direction * knockback_distance
-				#player.knockbackCooldown = 0
+
+		# Once the timer expires, revert to normal
+		if knockback_timer <= 0:
+			is_knocked_back = false
+		return
+	damageCooldown += 1
+	
+	velocity.y += gravity * delta
+	if chase:
+		handleChasing()
+	else:
+		velocity.x = 0
+		anim.play("idle")	
+	amIAlive()
+	move_and_slide()
 			
 func getCharName():
 	return charName
 
-func handleChasing(_delta):
-	#anim.play("run")  # Play the running animation
-	var player = get_node("../Player")  # Get the player node
+func handleChasing():
+	var current_scene = get_tree().get_current_scene()
+	if current_scene == null:
+		return
+	var player = current_scene.get_node_or_null("Player")
+	if player == null:
+		return
+	var direction = player.position - position
+	if direction.length() > 0:
+		direction = direction.normalized()
+	handleDirection(direction.x)
 
-	# Calculate the direction to the player
-	var direction = (player.position - self.position).normalized()
-	
-	# Flip sprite based on direction
-	if direction.x > 0:
-		$BossSprite.scale.x = -1
-	else:
-		$BossSprite.scale.x = 1
-
-	# Update velocity based on direction and speed
+	# Set chase velocity, but do NOT manually update position.
 	velocity.x = direction.x * SPEED
+	velocity.y = direction.y * SPEED
+	
 
-	# Smoothly move the enemy towards the player
-	position += velocity * _delta
-
-
-#If the player is close enough, they'll chase the player
 func _on_player_detection_area_body_entered(body):
 		if body.name == "Player":
 			chase = true
@@ -84,9 +83,9 @@ func death():
 		isDead = true
 		chase = false
 		set_collision_layer(0)
-		var rng = RandomNumberGenerator.new()
-		var randomNum = rng.randi_range(0, 5)
-		var lootRoll = rng.randi_range(1, 10)
+		#var rng = RandomNumberGenerator.new()
+		#var randomNum = rng.randi_range(0, 5)
+		#var lootRoll = rng.randi_range(1, 10)
 		#Game.killed_enemy(5, randomNum, lootRoll, self.position, "Frog")
 		#get_node("AnimatedSprite2D").play("death")
 		#var tween1 = get_tree().create_tween()
@@ -95,9 +94,8 @@ func death():
 		self.queue_free()
 
 func amIAlive():
-	if self.HP < 1:
+	if self.HP <= 0:
 		damaging = false
-		get_parent().frog_count -= 1
 		death()
 	else:
 		isDead = false
@@ -118,12 +116,30 @@ func _on_player_death_body_entered(body):
 #to true.
 func _on_player_collision_body_entered(body):
 	if body.name == "Player":
-		player = get_node("../../Player/Player")
+		var player = body
 		damaging = true
 		currentTarget = player
 
 func _on_player_collision_body_exited(_body: Node2D) -> void:
 	damaging = false
 
+func handleDirection(direction: float): #Bat normally faces left
+	if direction > 0 and sprite.flip_h == false:
+		#Left
+		sprite.flip_h = true
+	elif direction < 0 and sprite.flip_h == true:
+		#Right
+		sprite.flip_h = false
 
-
+func apply_knockback(dir: Vector2, force: float, duration: float):
+	is_knocked_back = true
+	knockback_timer = duration
+	knockback_velocity = dir * force
+	
+	
+func apply_damage(amount):
+	if damageCooldown < 10:
+		return
+	else:
+		HP -= (amount - DEFENSE)
+		damageCooldown = 0

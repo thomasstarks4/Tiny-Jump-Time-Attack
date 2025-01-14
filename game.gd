@@ -9,6 +9,7 @@ var playerHealthRegen = 0
 var player_stopped = false
 var is_in_dialogue = false
 
+const ENEMIES = ["Boss1", "Bat"]
 func _ready():
 	reset_cooldowns()
 

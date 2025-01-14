@@ -4,12 +4,13 @@ var wall_slide_timer = 0.0
 var is_wall_sliding = false
 
 #Movement variables
-const SPEED = 300.0
+const SPEED = 250.0
 const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var anim = $AnimationPlayer
 @onready var sprite = $PlayerSprite
+@onready var swordHitBox = $PlayerSprite/SwordArea
 
 # Animation constants
 const IDLE_ANIMATION = "idle"
@@ -17,8 +18,10 @@ const RUN_ANIMATION = "run"
 const FALL_ANIMATION = "fall"
 const JUMP_ANIMATION = "jump"
 const ATTACK_ANIMATION = "attack-1"
+const AIR_ATTACK_ANIMATION = "air-attack-1"
 
 var is_jumping = false
+var is_attacking = false
 
 func _ready():
 	$PlayerSprite/SwordArea/SwordHitBox.disabled = true
@@ -32,7 +35,7 @@ func _physics_process(delta):
 			is_wall_sliding = false
 			velocity.y += gravity * delta
 
-		if is_on_wall():
+		if is_on_wall() and not is_attacking:
 			if velocity.y > 0 and wall_slide_timer:
 				is_wall_sliding = true
 			else:
@@ -60,12 +63,16 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 		# Movement and animation
-		handle_movement(direction)
+		if not is_attacking:
+			handle_movement(direction)
+		handle_attack()
+		check_sword_collisions()
 		move_and_slide()
+		
 
 func handle_movement(direction: float):
 	# Floor animations
-	if is_on_floor():
+	if is_on_floor() and not is_attacking:
 		if direction != 0:
 			anim.play(RUN_ANIMATION)
 		else:
@@ -91,7 +98,42 @@ func handle_movement(direction: float):
 func handleDirection(direction: float):
 	if direction > 0 and sprite.flip_h == true:
 		#Right
-		$PlayerSprite.flip_h = false
+		sprite.flip_h = false
+		swordHitBox.scale.x = 1 #return sword hit area to default position
 	elif direction < 0 and sprite.flip_h == false:
 		#Left
-		$PlayerSprite.flip_h = true
+		sprite.flip_h = true
+		swordHitBox.scale.x = -1 #flip sword area to match sprite
+
+func handle_attack():
+	if not is_attacking:
+		if Input.is_action_just_pressed("attack"):
+			is_attacking = true
+			if is_on_floor():
+				anim.play(ATTACK_ANIMATION)
+			else:
+				anim.play(AIR_ATTACK_ANIMATION)
+			await anim.animation_finished
+			is_attacking = false
+
+##
+#  New function: Checks for overlapping bodies in the SwordHitBox,
+#  calls getCharName() if it exists, and pushes them away if they are in Game.ENEMIES.
+##
+func check_sword_collisions():
+	var bodies = swordHitBox.get_overlapping_bodies()
+	for body in bodies:
+		# 1. Check if the body has a getCharName() function.
+		if body.has_method("getCharName"):
+			var enemy_name = body.getCharName()
+
+			# 2. If the name is in the Game.ENEMIES list, push them away.
+			if enemy_name in Game.ENEMIES:
+				push_enemy_away(body)
+				body.apply_damage(2)
+
+func push_enemy_away(enemy):
+	var push_direction = global_position.direction_to(enemy.global_position)
+	var push_force = 300.0
+	enemy.apply_knockback(push_direction, push_force, 0.3)
+
